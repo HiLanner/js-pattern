@@ -11,7 +11,7 @@ var Observable = {
   removeObserver: function(id) {
     for (var i = this.observers.length - 1; i >=0; i--) {
       // this.observers[i]
-      if(this.this.observers[i].id === id) {
+      if(this.observers[i].id === id) {
         this.observers.splice(i, 1)
         return true
       }
@@ -24,3 +24,17 @@ var Observable = {
     }
   }
 }
+
+var id_1 = Observable.addObserver(function(message){
+  console.log("First observer message:" + message)
+})
+
+var obverser = function(message) {
+  console.log("Second observer message:" + message)
+}
+
+var id_2 = Observable.addObserver(obverser)
+
+Observable.notifyObservers('lalala')
+Observable.removeObserver(id_2)
+Observable.notifyObservers('hahahavv')
